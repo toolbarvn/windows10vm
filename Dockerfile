@@ -36,14 +36,14 @@ if [ -e /dev/kvm ]; then\n\
   echo "✅ KVM acceleration available"\n\
   KVM_ARG="-enable-kvm"\n\
   CPU_ARG="host"\n\
-  MEMORY="8G"\n\
-  SMP_CORES=4\n\
+  MEMORY="6G"\n\
+  SMP_CORES=2\n\
 else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
   KVM_ARG=""\n\
   CPU_ARG="qemu64"\n\
-  MEMORY="8G"\n\
-  SMP_CORES=4\n\
+  MEMORY="6G"\n\
+  SMP_CORES=2\n\
 fi\n\
 \n\
 # Download ISO if needed\n\
