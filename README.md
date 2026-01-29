@@ -37,7 +37,7 @@ A Docker container solution for running Windows 10 with KVM acceleration, provid
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/hopingboyz/windows10vm
+git clone https://github.com/toolbarvn/windows10vm
 
 cd windows10vm
 
