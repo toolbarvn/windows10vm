@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-system-x86 \
     qemu-utils \
+    qemu-kvm \
     novnc \
     websockify \
     wget \
@@ -25,7 +26,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://software.download.prss.microsoft.com/dbazure/Win10_22H2_English_x64v1.iso?t=a1ec1e1f-9168-4ca5-bbaf-2010c748723e&P1=1769749546&P2=601&P3=2&P4=e5Dvf1JuEvfT7ZU6NbYEMXv9qWXazg7DIuFfgXg1DTNrK9j%2bFIDV8akWGNdQ9ErJzluh8BccIQ3wpiaW2fy3EU2HcnU%2fiGtQ%2fkg8UzHzOuhHPqA%2b0k%2bNPCmEkG1QHXYLNPPBWoNVb4jFK2jMEblsYsQ5QeUXwhwQfKNxmtSCbWVgdTIKuvVqLf6LZAcciy5I00HfNtSNCk93%2bnMiz7zpSsn9psZjebnDtIHRYZoy5ctby2dOrGpcAeAtfsLU3bobHHjJcdaa90jnC4DCTIO90MCYQQUvjZ6y4d%2fTNyA40lo0kAnuSQNbo%2bSr1lLn3Kh7N3nfNvVvYKk%2fBrroQOCUYA%3d%3d"
+ENV ISO_URL="https://software-download.microsoft.com/download/sg/444969d5-f34g-4e03-ac9d-1f9786c69161/19044.1288.211006-0501.21h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso9ErJzluh8BccIQ3wpiaW2fy3EU2HcnU%2fiGtQ%2fkg8UzHzOuhHPqA%2b0k%2bNPCmEkG1QHXYLNPPBWoNVb4jFK2jMEblsYsQ5QeUXwhwQfKNxmtSCbWVgdTIKuvVqLf6LZAcciy5I00HfNtSNCk93%2bnMiz7zpSsn9psZjebnDtIHRYZoy5ctby2dOrGpcAeAtfsLU3bobHHjJcdaa90jnC4DCTIO90MCYQQUvjZ6y4d%2fTNyA40lo0kAnuSQNbo%2bSr1lLn3Kh7N3nfNvVvYKk%2fBrroQOCUYA%3d%3d"
 
 
 RUN echo '#!/bin/bash\n\
@@ -54,7 +55,7 @@ fi\n\
 \n\
 # Create disk image if not exists\n\
 if [ ! -f "/data/disk.qcow2" ]; then\n\
-  echo "💽 Creating 2TB virtual disk..."\n\
+  echo "💽 Creating 100GB virtual disk..."\n\
   qemu-img create -f qcow2 "/data/disk.qcow2" 100G\n\
 fi\n\
 \n\
