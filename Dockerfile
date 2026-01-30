@@ -37,8 +37,8 @@ if [ -e /dev/kvm ]; then\n\
   echo "✅ KVM acceleration available"\n\
   KVM_ARG="-enable-kvm"\n\
   CPU_ARG="host"\n\
-  MEMORY="4G"\n\
-  SMP_CORES=2\n\
+  MEMORY="10G"\n\
+  SMP_CORES=4\n\
 else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
   KVM_ARG=""\n\
