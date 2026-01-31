@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-system-x86 \
     qemu-utils \
-    qemu-kvm \
     novnc \
     websockify \
     wget \
@@ -26,7 +25,7 @@ RUN wget https://github.com/novnc/noVNC/archive/refs/heads/master.zip -O /tmp/no
     rm -rf /tmp/novnc.zip /tmp/noVNC-master
 
 
-ENV ISO_URL="https://www.mediafire.com/file/srfpxr3jvyk2r5y/W10lite2020x64.zip/file?dkey=hdlgnlpg975&r=714L4AwFVeUN3Kj1yLkuPevQrp9yclXhUnPRnyN1ib5sfrFMrWBIoOClgVIHb2bPBvYXMiDp%2fSM2vlzi33gGvpA41JMlb40Aoa4eqVfOm0Bq98nzVqv71Qbj%2fMXQCrYTT682g6DZLx82qz5ueaAatjW4mnahGD0o9KjSQAfjGIb%2b5UdLADVcHrDwF9kdZIejnJRQbRpaQAFFYfvVYF3kUzIBIBe%2bHxTf2yQ%3d%3dj7mX2xH5yLYI5HcsBbyGJClFa9c1vSA71ta5C1nYA1jHLjHb5OKtv49ogpZEksjQDanToFJyVL4AwFVeUN3Kj1yLkuPevQrp9yclXhUnPRnyN1ib5sfrFMrWBIoOClgVIHb2bPBvYXMiDp%2fSM2vlzi33gGvpA41JMlb40Aoa4eqVfOm0Bq98nzVqv71Qbj%2fMXQCrYTT682g6DZLx82qz5ueaAatjW4mnahGD0o9KjSQAfjGIb%2b5UdLADVcHrDwF9kdZIejnJRQbRpaQAFFYfvVYF3kUzIBIBe%2bHxTf2yQ%3d%3dzluh8BccIQ3wpiaW2fy3EU2HcnU%2fiGtQ%2fkg8UzHzOuhHPqA%2b0k%2bNPCmEkG1QHXYLNPPBWoNVb4jFK2jMEblsYsQ5QeUXwhwQfKNxmtSCbWVgdTIKuvVqLf6LZAcciy5I00HfNtSNCk93%2bnMiz7zpSsn9psZjebnDtIHRYZoy5ctby2dOrGpcAeAtfsLU3bobHHjJcdaa90jnC4DCTIO90MCYQQUvjZ6y4d%2fTNyA40lo0kAnuSQNbo%2bSr1lLn3Kh7N3nfNvVvYKk%2fBrroQOCUYA%3d%3d"
+ENV ISO_URL="https://download1593.mediafire.com/wvs2xet9fpygNuA3qQrpmxYClNWg_V0e7mlCmEkASBkz6F8dXSeSPNnifT46JSqhmeuKteZ5uDAEyg0mv59oluqcnZldhN7ln17FH3nyan9iG6fwnUSAXvKeOL0cKb5c-3RG1ZVQHItBmBKb2P52brQqDgPl6NHjtDkibydluEIlNX8/srfpxr3jvyk2r5y/W10lite2020x64.zip"
 
 
 RUN echo '#!/bin/bash\n\
@@ -37,14 +36,14 @@ if [ -e /dev/kvm ]; then\n\
   echo "✅ KVM acceleration available"\n\
   KVM_ARG="-enable-kvm"\n\
   CPU_ARG="host"\n\
-  MEMORY="8G"\n\
+  MEMORY="10G"\n\
   SMP_CORES=4\n\
 else\n\
   echo "⚠️  KVM not available - using slower emulation mode"\n\
   KVM_ARG=""\n\
   CPU_ARG="qemu64"\n\
-  MEMORY="4G"\n\
-  SMP_CORES=2\n\
+  MEMORY="2G"\n\
+  SMP_CORES=1\n\
 fi\n\
 \n\
 # Download ISO if needed\n\
